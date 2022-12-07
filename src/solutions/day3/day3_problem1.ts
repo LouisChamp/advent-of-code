@@ -1,6 +1,16 @@
 const path = require("path");
 const fs = require("fs");
 
+const letterToNumber = (letter: string) => {
+  const code = letter.charCodeAt(0);
+
+  if (code >= 65 && code <= 90) {
+    return code - 38;
+  } else {
+    return code - 96;
+  }
+};
+
 export const day3_problem1 = () => {
   try {
     const problemPath = path.join(__dirname, "problem1_input.txt");
@@ -21,8 +31,10 @@ export const day3_problem1 = () => {
             break;
           }
         }
-        return repeated;
-      });
+        return repeated as string;
+      })
+      .map(letterToNumber)
+      .reduce((acc, current) => acc + current, 0);
 
     console.log(answer);
   } catch (err) {

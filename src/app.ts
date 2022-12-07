@@ -3,10 +3,17 @@ import {
   day2_problem1,
   day2_problem2,
   day3_problem1,
+  day3_problem2,
 } from "./solutions";
 
 const main = (mode: "all" | "last"): void => {
-  const fns = [day1_problem2, day2_problem1, day2_problem2, day3_problem1];
+  const fns = [
+    day1_problem2,
+    day2_problem1,
+    day2_problem2,
+    day3_problem1,
+    day3_problem2,
+  ];
 
   if (mode === "all") {
     fns.forEach(fn => fn());
