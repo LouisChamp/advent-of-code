@@ -24,12 +24,21 @@ export const day3_problem2 = () => {
     }
     const answer = elfGroups
       .map(elfGroup => elfGroup.map(elf => [...new Set(elf.split(""))]).flat(1))
-      .map(elfGroup =>
+      .map(elfGroup => {
+        let result = "";
         elfGroup.reduce((obj, letter) => {
-          obj[letter] = (obj[letter] || 0) + 1;
+          const sum = (obj[letter] || 0) + 1;
+          obj[letter] = sum;
+          if (sum === 3) {
+            result = letter;
+          }
           return obj;
-        }, {} as { [k: string]: number })
-      );
+        }, {} as { [k: string]: number });
+
+        return result;
+      })
+      .map(letterToNumber)
+      .reduce((acc, current) => acc + current, 0);
 
     console.log(answer);
   } catch (err) {
