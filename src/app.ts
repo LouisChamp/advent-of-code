@@ -5,6 +5,7 @@ import {
   day3_problem1,
   day3_problem2,
   day4_problem1,
+  day4_problem2,
 } from "./solutions";
 
 const main = (mode: "all" | "last"): void => {
@@ -15,6 +16,7 @@ const main = (mode: "all" | "last"): void => {
     day3_problem1,
     day3_problem2,
     day4_problem1,
+    day4_problem2,
   ];
 
   if (mode === "all") {

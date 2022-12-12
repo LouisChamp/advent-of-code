@@ -10,10 +10,15 @@ export const day4_problem1 = () => {
       .map(line => {
         return line.split(",").map(range => range.split("-").map(Number));
       })
-      .map(line => {
-        const a = line.map(([start, end]) => end - start);
-        const max = Math.max(...a);
-      });
+      .map(pairOfRanges => {
+        const firstEl = pairOfRanges[0];
+        const secondEl = pairOfRanges[1];
+
+        if (firstEl[0] <= secondEl[0] && firstEl[1] >= secondEl[1]) return true;
+        if (secondEl[0] <= firstEl[0] && secondEl[1] >= firstEl[1]) return true;
+        return false;
+      })
+      .reduce((acc, el) => acc + (el === true ? 1 : 0), 0);
     console.log(answer);
   } catch (err) {
     console.log(err);
